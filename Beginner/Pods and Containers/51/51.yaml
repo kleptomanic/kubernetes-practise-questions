@@ -1,0 +1,19 @@
+# Create a pod named `frontend-pod` with the `nginx:1.21` image in the `ecommerce` namespace using `kubectl run`.
+
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ecommerce
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-pod
+  namespace: ecommerce
+  labels:
+    app.kubernetes.io/name: frontend-pod
+spec:
+  containers:
+  - name: frontend-pod
+    image: nginx:1.21
