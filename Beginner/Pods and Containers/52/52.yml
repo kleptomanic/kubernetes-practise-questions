@@ -1,0 +1,22 @@
+# Create a pod with two containers (`nginx` and `redis`) for a web application in the `payment` namespace.
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: payment
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: 52pod
+  namespace: payment
+  labels:
+    app.kubernetes.io/name: 52pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  - name: redis
+    image: redis
