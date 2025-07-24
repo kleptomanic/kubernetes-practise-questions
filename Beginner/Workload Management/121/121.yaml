@@ -1,0 +1,20 @@
+# Create a deployment named `store-front` with 3 replicas using `nginx:1.21` in the `ecommerce` namespace.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-front
+  namespace: ecommerce
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: cont
+        image: nginx:1.21
