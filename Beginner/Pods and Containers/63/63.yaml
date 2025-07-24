@@ -1,0 +1,18 @@
+# Create a pod with CPU request of 0.5 and memory limit of 512Mi in the `ecommerce` namespace.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podwithlimit
+  namespace: ecommerce
+  labels:
+    app.kubernetes.io/name: podwithlimit
+spec:
+  containers:
+  - name: podwithlimit
+    image: nginx
+    resources:
+      requests:
+        cpu: "0.5"
+      limits:
+        memory: "512Mi"
