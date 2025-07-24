@@ -1,0 +1,29 @@
+# Create a pod with an init container to create a file `/data/config.txt` before the main container starts.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-init
+  labels:
+    app.kubernetes.io/name: myapp
+spec:
+  containers:
+  - name: mainpod
+    image: nginx
+    volumeMounts:
+    - name: datadir
+      mountPath: /data
+      readOnly: false
+  initContainers:
+  - name: init-cont
+    image: busybox
+    command: ["/bin/sh"]
+    args: ["-c","touch data/config.txt"]
+    volumeMounts:
+    - name: datadir
+      mountPath: /data
+      readOnly: false
+  volumes:
+  - name: datadir
+    emptyDir: {}
+    
