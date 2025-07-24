@@ -28,3 +28,14 @@ spec:
             cpu: "0.6"
             memory: "500Mi"
           
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: testservice
+  namespace: ecommerce
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: frontend
