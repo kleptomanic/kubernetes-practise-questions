@@ -1,0 +1,23 @@
+# Create a pod using a service account named `web-sa` in the `payment` namespace.
+
+
+# creating service account
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: web-sa
+  namespace: payment
+automountServiceAccountToken: false
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-sa
+  namespace: payment
+spec:
+  containers:
+  - name: cont
+    image: nginx
+  serviceAccountName: web-sa
