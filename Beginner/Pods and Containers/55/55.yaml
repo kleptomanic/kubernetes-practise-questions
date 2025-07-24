@@ -1,5 +1,9 @@
 # Create a pod with an init container to create a file `/data/config.txt` before the main container starts.
 
+# Things to consider : 
+# 1. Both of the containers must have a volume mounted
+# 2. touch Command dont expect args to be seperated.
+
 apiVersion: v1
 kind: Pod
 metadata:
