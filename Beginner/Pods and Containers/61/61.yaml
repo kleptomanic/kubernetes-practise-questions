@@ -1,0 +1,17 @@
+# Create a pod with label `app=frontend` in the `inventory` namespace.
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: inventory
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-label
+  namespace: inventory
+  labels:
+    app: frontend
+spec:
+  containers:
+  - name: pod
+    image: nginx
