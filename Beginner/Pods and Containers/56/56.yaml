@@ -1,0 +1,11 @@
+# Create a pod that runs `echo "Order processed"` and exits using `busybox`.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-run
+spec:
+  containers:
+    - name: command-run-pod
+      image: busybox
+      command: ["/bin/sh","-c","echo 'Order Processed.'"]
