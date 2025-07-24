@@ -4,6 +4,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: daily-report
+  namespace: default
 spec:
   schedule: "* 1 * * *"
   jobTemplate:
