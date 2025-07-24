@@ -1,0 +1,25 @@
+# Set environment variables `APP_ENV=prod` and `LOG_LEVEL=info` in a pod using a ConfigMap.
+
+# Creating a new configmap 
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: data-cm
+data:
+  APP_ENV: prod
+  LOG_LEVEL: info
+
+---
+# Creating pod to use config map
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-cm
+spec:
+  containers:
+  - name: pod-cm
+    image: nginx
+    envFrom:
+    - configMapRef:
+        name: data-cm
