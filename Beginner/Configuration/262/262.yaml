@@ -1,0 +1,21 @@
+# Mount the `store-config` ConfigMap as a volume at `/etc/config` in a pod.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-cm-mounted
+  namespace: ecommerce
+  labels:
+    app.kubernetes.io/name: pod-with-cm-mounted
+spec:
+  containers:
+  - name: myapp
+    image: nginx
+    volumeMounts:
+    - name: config
+      mountPath: /etc/config
+  volumes:
+  - name: config
+    configMap:
+      name: store-config
+      
