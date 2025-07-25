@@ -1,0 +1,10 @@
+# Create a ConfigMap named `store-config` with keys `env=prod` and `log_level=debug` in `ecommerce`.
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: store-config
+  namespace: ecommerce
+data:
+  env: prod
+  log_level: debug
