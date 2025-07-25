@@ -1,0 +1,10 @@
+# Create a Secret named `store-secret` with keys `api_key=abc123` and `db_pass=secret`.
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  api_key: YWJjMTIzCg==
+  db_pass: c2VjcmV0Cg==
