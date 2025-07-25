@@ -1,0 +1,19 @@
+# Mount the `store-secret` Secret as a volume at `/etc/secrets` in a pod.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-secrets
+  labels:
+    app.kubernetes.io/name: pod-with-secrets
+spec:
+  containers:
+  - name: pod-with-secrets
+    image: nginx
+    volumeMounts:
+    - name: secret-vol
+      mountPath: /etc/secrets
+  volumes:
+  - name: secret-vol
+    secret:
+      secretName: mysecret
