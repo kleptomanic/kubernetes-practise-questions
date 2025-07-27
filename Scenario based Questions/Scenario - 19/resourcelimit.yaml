@@ -1,0 +1,31 @@
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: resource-quota-for-default-ns
+  namespace: default
+spec:
+  hard:
+    cpu: "1000m"
+    memory: "2Gi"
+
+---
+# testing by creating a pod for this
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod-with-high-request-for-cpu-and-memory
+  labels:
+    app.kubernetes.io/name: myatestpod-with-high-request-for-cpu-and-memorypp
+spec:
+  containers:
+  - name: myapp
+    image: nginx
+    resources:
+      requests:
+        cpu: "1"
+        memory: "2Gi"
+      limits:
+        memory: "3Gi"
+        cpu: "5000m"
+    

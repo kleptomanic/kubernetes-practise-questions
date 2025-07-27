@@ -1,0 +1,2 @@
+Scenario: Your finance team enforces resource limits to control costs.
+Question: Implement a ResourceQuota to limit CPU to 1 core and memory to 2Gi in a namespace. Deploy an Nginx app and test quota enforcement.
