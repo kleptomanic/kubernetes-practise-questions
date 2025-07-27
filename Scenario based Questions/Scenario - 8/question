@@ -1,0 +1,3 @@
+Scenario: Your development team needs restricted access to Kubernetes resources.
+
+Question: Implement RBAC to allow a ServiceAccount for an Nginx app to read ConfigMaps only. Test with kubectl auth can-i.

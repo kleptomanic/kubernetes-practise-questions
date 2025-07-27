@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: ServiceAccount
+automountServiceAccountToken: false
+metadata:
+  name: nginx-sa
+  namespace: default
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: nginx-cm-ro-role
+  namespace: default
+rules:
+  - apiGroups:
+    - ""
+    resources:
+    - configmaps
+    verbs:
+    - list
+    - get
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: nginx-cm-rolebinding
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: nginx-cm-ro-role
+subjects:
+  - kind: ServiceAccount
+    name: nginx-sa
+    namespace: default
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-app
+  namespace: default
+  labels:
+    app.kubernetes.io/name: nginx-app
+spec:
+  serviceAccountName: nginx-sa
+  automountServiceAccountToken: false
+  containers:
+  - name: nginx
+    image: nginx
+
+
+# view ausing auth as :  kubectl auth can-i list cm --as=system:serviceaccount:default:nginx-sa
