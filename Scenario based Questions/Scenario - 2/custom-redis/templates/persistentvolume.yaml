@@ -1,0 +1,13 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+    name: redis-pv
+spec:
+    accessModes:
+    - "ReadWriteOnce"
+    capacity:
+        storage: "3Gi"
+    hostPath:
+        path: /mnt/redis-db
+        type: DirectoryOrCreate
+    volumeMode: Filesystem

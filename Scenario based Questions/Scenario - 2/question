@@ -1,0 +1,3 @@
+Scenario: Your DevOps team wants to standardize Redis deployments with Helm for caching.
+
+Question: Create a Helm chart for a Redis instance (redis:alpine) with a StatefulSet and 1Gi PVC. Allow customizable replicas and test with redis-cli.

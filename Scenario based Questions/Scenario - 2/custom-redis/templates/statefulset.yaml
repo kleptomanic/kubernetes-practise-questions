@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: "{{ include "custom-redis.fullname" . }}"
+spec:
+  replicas: {{ .Values.replicasCount }}
+  selector:
+    matchLabels:
+      app: custom-redis
+  template:
+    metadata:
+      name: custom-redis
+      labels:
+        app: custom-redis
+    spec:
+      containers:
+      - name: custom-redis
+        image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+        volumeMounts:
+        - name: redis-pvc
+          mountPath: /data
+      volumes:
+      - name: redis-pvc
+        persistentVolumeClaim:
+          claimName: redis-pvc

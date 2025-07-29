@@ -1,0 +1,7 @@
+
+# replicas Count
+replicasCount: 5
+
+image:
+  name: redis
+  tag: alpine
