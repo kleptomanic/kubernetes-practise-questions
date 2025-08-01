@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: http-for-label-app-web
+
+spec:
+  policyTypes:
+  - Ingress
+  podSelector:
+    matchLabels:
+      app: web
+  ingress:
+    - ports:
+      - port: 80
+        protocol: TCP

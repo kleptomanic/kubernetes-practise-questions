@@ -1,0 +1,1 @@
+Scenario: A pod labeled app=web in the frontend namespace should only accept HTTP traffic (port 80). How would you configure this?
