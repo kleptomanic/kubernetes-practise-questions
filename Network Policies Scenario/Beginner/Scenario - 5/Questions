@@ -1,0 +1,1 @@
+Scenario: Pods in monitoring namespace need to scrape metrics from default namespace pods. How would you secure this?
