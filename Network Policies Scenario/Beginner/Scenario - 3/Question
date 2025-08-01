@@ -1,0 +1,1 @@
+Scenario: Pods in dev namespace are accessible from prod. How can you enforce namespace isolation with a network policy?

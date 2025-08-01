@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: neptpol-from-prod-to-dev
+  namespace: dev
+spec:
+  policyTypes:
+  - Ingress
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: dev
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: netpol-from-dev-to-prod
+  namespace: dev
+spec:
+  podSelector: {}
+  policyTypes:
+  - Engress
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: prod
+
+
