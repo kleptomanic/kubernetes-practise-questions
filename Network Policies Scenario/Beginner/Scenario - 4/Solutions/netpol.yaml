@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io
+kind: NetworkPolicy
+metadata:
+  name: only-pod-communication
+spec:
+  policyTypes:
+  - Ingress
+  ingress:
+    - from:
+       - podSelector: 
+            matchLabels:
+              app: app1
+  podSelector:
+    matchLabels:
+      app: db
