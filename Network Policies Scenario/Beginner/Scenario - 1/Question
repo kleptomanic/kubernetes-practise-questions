@@ -1,0 +1,1 @@
+Scenario: Your cluster requires a default-deny policy for all pods in the prod namespace. How would you block all ingress traffic?
